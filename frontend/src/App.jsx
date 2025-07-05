@@ -28,9 +28,14 @@ function App() {
   };
 
   const markDone = async (id) => {
-    await fetch(`${API_URL}/tasks/${id}`, { method: 'PUT' });
+    await fetch(`${API_URL}/tasks/${id}/complete`, { method: 'PUT' });
     setTasks(prev => prev.filter(task => task.id !== id));
   };
+
+  const deleteTask = async (id) => {
+  await fetch(`${API_URL}/tasks/${id}`, { method: 'DELETE' });
+  setTasks(prev => prev.filter(task => task.id !== id));
+};
 
   return (
     <div className="container">
@@ -62,6 +67,7 @@ function App() {
               <button className="done-button" onClick={() => markDone(task.id)}>
                 ✅ Done
               </button>
+              
             </div>
           ))}
         </div>
