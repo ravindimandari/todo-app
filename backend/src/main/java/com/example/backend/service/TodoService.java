@@ -43,7 +43,7 @@ public class TodoService {
     }
 
     public void deleteTask(Integer id){
-        Optional<TodoEntity> taskDel=todoRepository.findById(id);
+        todoRepository.deleteById(id);
 
     }
 
